@@ -1,0 +1,9 @@
+
+
+dataset/hassan
+
+results/real_time/*.png
+
+__pycache__/
+*.pyc
+*.pyo
