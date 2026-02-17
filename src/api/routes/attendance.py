@@ -46,12 +46,10 @@ def run_video_recognition(
     attendance_csv: str = Form("attendance_video.csv"),
     db: Session = Depends(get_db)
 ):
-    # Save uploaded video
     temp_video_path = f"temp_{input_video.filename}"
     with open(temp_video_path, "wb") as f:
         f.write(input_video.file.read())
 
-    # Use your existing VideoRecognizer
     recognizer = VideoFaceRecognition()
     recognizer.process_video(
         input_path=temp_video_path,

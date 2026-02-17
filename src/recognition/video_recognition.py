@@ -11,7 +11,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 class VideoFaceRecognition():
     
-    def __init__(self, embeddings_db_path="embeddings.npy", threshold=0.6):
+    def __init__(self, embeddings_db_path="embeddings/embeddings.npy", threshold=0.6):
         
         self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         self.threshold = threshold
