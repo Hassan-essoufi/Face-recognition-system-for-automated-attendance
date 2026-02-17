@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from datetime import datetime
 
 class AttendanceCreate(BaseModel):
     person_name: str
@@ -21,6 +22,7 @@ class PersonAdd(BaseModel):
 class PersonRead(BaseModel):
     id: int
     name: str
+    created_at: datetime
 
     class Config:
         from_attributes = True
