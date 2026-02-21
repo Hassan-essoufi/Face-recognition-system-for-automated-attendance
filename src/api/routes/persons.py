@@ -34,8 +34,7 @@ def add_person(
     try:
         if capture_method == "webcam":
             capture_faces(
-                person_name=payload.name,
-                output_dir=payload.output_dir
+                person_name=payload.name
             )
         elif capture_method == "upload":
             if not image_file:
@@ -50,8 +49,7 @@ def add_person(
             # Apply augmentation
             augment_image(
                 image_path=image_path,
-                person_name=payload.name,
-                output_dir=payload.output_dir
+                person_name=payload.name
             )
             
         else:

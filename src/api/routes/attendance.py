@@ -1,3 +1,4 @@
+import os
 from fastapi import APIRouter, Depends, UploadFile, File, Form
 from sqlalchemy.orm import Session
 from typing import List
@@ -17,21 +18,22 @@ def run_real_time_attendance(
     threshold: float = Form(0.6),
     db: Session = Depends(get_db)
 ):
+    csv_path = os.path.join('attendance/webcam', csv_file)
     real_time_att(
-        embeddings_path='embeddings.npy',
-        csv_file=csv_file,
+        embeddings_path='embeddings/embeddings.npy',
+        csv_file=csv_path,
         threshold=threshold
     )
 
-    with open(csv_file, "r") as f:
+    with open(csv_path, "r") as f:
         reader = csv.DictReader(f)
         for row in reader:
             mark_attendance_service(
                 db=db,
                 person_name=row["Name"],
-                confidence=None,
+                confidence=float(row["confidence"]),
                 source="webcam",
-                status=row["Status"]
+
             )
 
     return {"status": "completed", "file": csv_file}
@@ -58,8 +60,6 @@ def run_video_recognition(
     )
 
     # Store attendance in DB
-    import csv
-    from datetime import datetime
 
     with open(attendance_csv, "r") as f:
         reader = csv.DictReader(f)
@@ -67,9 +67,8 @@ def run_video_recognition(
             mark_attendance_service(
                 db=db,
                 person_name=row["Name"],
-                confidence=None,
-                source="video",
-                status=row["Status"]
+                confidence=float(row["confidence"]),
+                source="video"
             )
 
     return {"status": "success", "output_video": output_video_path, "attendance_csv": attendance_csv}

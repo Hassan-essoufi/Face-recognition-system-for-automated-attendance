@@ -24,6 +24,7 @@ def real_time_att(
     known_embeddings = known_embeddings / norm(known_embeddings, axis=1, keepdims=True)
 
     attendance = {name: "Absent" for name in known_names}
+    confidence = {name: 0.0 for name in known_names}
 
     cap = cv2.VideoCapture(0)
     print("Press 'q' to stop")
@@ -55,6 +56,7 @@ def real_time_att(
                 if best_score >= threshold:
                     name = known_names[best_idx]
                     attendance[name] = "Present"
+                    confidence[name] = max(confidence[name], float(best_score))
                     color = (0, 255, 0)
                     label = f"{name} ({best_score:.2f})"
                 else:
@@ -86,9 +88,10 @@ def real_time_att(
 
     with open(csv_file, "w", newline="") as f:
         writer = csv.writer(f)
-        writer.writerow(["Name", "Status", "Time"])
+        writer.writerow(["Name", "Status", "confidence", "Time"])
         for name, status in attendance.items():
-            writer.writerow([name, status, time_now])
+            conf = round(confidence.get(name, 0.0), 3)
+            writer.writerow([name, status, conf, time_now])
 
     print("Attendance saved to", csv_file)
 

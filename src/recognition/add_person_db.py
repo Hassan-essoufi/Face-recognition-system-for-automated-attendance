@@ -4,11 +4,11 @@ import time
 import numpy as np
 from random import uniform, randint
 
-def augment_image(image_path, person_name, output_dir, nb_imgs=150):
+def augment_image(image_path, person_name, nb_imgs=150):
     """
     Generate multiple augmented images from a single person image.
     """
-    output_dir = os.path.join(output_dir, person_name)
+    output_dir = os.path.join('dataset', person_name)
     os.makedirs(output_dir, exist_ok=True)
     img = cv2.imread(image_path)
     h, w = img.shape[:2]
@@ -40,12 +40,12 @@ def augment_image(image_path, person_name, output_dir, nb_imgs=150):
         cv2.imwrite(out_path, augmented)
 
 
-def capture_faces(person_name, output_dir="..\dataset", nb_imgs=150):
+def capture_faces(person_name, nb_imgs=150):
     """
     Automatic capturing of images 
     """
 
-    person_dir = os.path.join(output_dir, person_name)
+    person_dir = os.path.join('dataset', person_name)
     os.makedirs(person_dir, exist_ok=True)
 
     face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')

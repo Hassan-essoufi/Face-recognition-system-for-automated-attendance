@@ -27,6 +27,7 @@ class VideoFaceRecognition():
             print("Embeddings base not found")
         
         self.attendance = {name: "Absent" for name in self.embeddings_db.keys()}
+        self.confidence = {name: 0.0 for name in self.embeddings_db.keys()}
     
     def _load_models(self):
         """
@@ -148,6 +149,7 @@ class VideoFaceRecognition():
                             name, score = self._recognize_face(embedding)
                             if name != "Unknown":
                                 self.attendance[name] = "Present"
+                                self.confidence[name] = max(self.confidence[name], float(score))
                             color = (0, 255, 0) if name != "Unknown" else (0, 0, 255)
                             cv2.rectangle(frame, (x1, y1), (x2, y2), color, 2)
                             label = f"{name} ({score:.2f})"
@@ -173,9 +175,10 @@ class VideoFaceRecognition():
 
         with open(attendance_file, "w", newline="") as f:
             writer = csv.writer(f)
-            writer.writerow(["Name", "Status", "Time"])
+            writer.writerow(["Name", "Status", "confidence", "Time"])
             for name, status in self.attendance.items():
-                writer.writerow([name, status, time_now])
+                conf = round(self.confidence.get(name, 0.0), 3)
+                writer.writerow([name, status, conf, time_now])
         
         return True
 

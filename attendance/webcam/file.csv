@@ -1,0 +1,5 @@
+Name,Status,confidence,Time
+bill_gates,Absent,0.0,2026-02-21 23:35:05
+hassan,Present,0.91,2026-02-21 23:35:05
+jeff_bezos,Absent,0.0,2026-02-21 23:35:05
+mark_zuckerberg,Absent,0.0,2026-02-21 23:35:05

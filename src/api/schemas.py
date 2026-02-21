@@ -18,7 +18,6 @@ class AttendanceRead(AttendanceCreate):
 
 class PersonAdd(BaseModel):
     name: str
-    output_dir: str
     capture_method: str  
 
 class PersonRead(BaseModel):
