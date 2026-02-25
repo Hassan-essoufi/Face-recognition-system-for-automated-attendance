@@ -9,15 +9,16 @@ from src.database.models import Attendance
 from src.services.attendance_service import mark_attendance_service
 from src.recognition.webcam_attendance import real_time_att
 from src.recognition.video_recognition import VideoFaceRecognition
+import uuid
 
 router = APIRouter()
 
 @router.post("/real_time")
 def run_real_time_attendance(
-    csv_file: str = Form(...),
     threshold: float = Form(0.6),
     db: Session = Depends(get_db)
 ):
+    csv_file = f"{uuid.uuid4().hex}.csv"
     csv_path = os.path.join('attendance/webcam', csv_file)
     real_time_att(
         embeddings_path='embeddings/embeddings.npy',
@@ -32,29 +33,27 @@ def run_real_time_attendance(
                 db=db,
                 person_name=row["Name"],
                 confidence=float(row["confidence"]),
-                source="webcam",
-
+                source="webcam"
             )
 
     return {"status": "completed", "file": csv_file}
 
 
 # Video recognition
-
 @router.post("/video_recognition")
 def run_video_recognition(
     input_video: UploadFile = File(...),
-    output_video_path: str = Form("output.mp4"),
-    attendance_csv: str = Form("attendance_video.csv"),
     db: Session = Depends(get_db)
 ):
-    temp_video_path = f"temp_{input_video.filename}"
-    with open(temp_video_path, "wb") as f:
-        f.write(input_video.file.read())
+    video_path = os.path.join("video_db", "input", f"{input_video.filename}")
 
+    with open(video_path, "wb") as f:
+        f.write(input_video.file.read())
+    output_video_path = os.path.join("video_db", "output", f"{uuid.uuid4().hex}.mp4")
+    attendance_csv = os.path.join("attendance", "video", f"{uuid.uuid4().hex}.csv")
     recognizer = VideoFaceRecognition()
     recognizer.process_video(
-        input_path=temp_video_path,
+        input_path=video_path,
         output_path=output_video_path,
         attendance_file=attendance_csv
     )
