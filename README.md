@@ -63,7 +63,10 @@ http://localhost:8000/docs
 
 <img src="docs/screenshots/Face_recognition_api.png" width="800"/>
 
+---
+## 🏠 Home
 
+<img src="docs/screenshots/accueil.png" width="800"/>
 ---
 
 ## 👤 Person Management
