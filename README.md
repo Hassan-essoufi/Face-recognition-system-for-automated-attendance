@@ -2,28 +2,28 @@
 
 ### AI-Powered Real-Time Attendance Management Platform
 
-> A full-stack deep learning system that transforms face recognition into a scalable attendance solution.
-
+## Overview
+FacePresence is a full-stack attendance platform with:
+- Frontend dashboard (React + Vite)
+- FastAPI backend
+- Real-time and video-based face recognition workflows
+- Attendance export to CSV
+---
+### Backend:
 ![Python](https://img.shields.io/badge/Python-3.10+-blue)
 ![FastAPI](https://img.shields.io/badge/FastAPI-High%20Performance-009688)
-![React](https://img.shields.io/badge/React-Frontend-61DAFB)
+![OpenCV](https://img.shields.io/badge/OpenCV-5C3EE8?style=for-the-badge&logo=opencv&logoColor=white)
 ![PyTorch](https://img.shields.io/badge/PyTorch-DeepLearning-red)
-![License](https://img.shields.io/badge/License-MIT-green)
+
 
 ---
-
-# 🎯 Project Impact
-
-FacePresence demonstrates the ability to:
-
-* Deploy deep learning models in production APIs
-* Design modular backend architectures
-* Build real-time computer vision systems
-* Integrate ML with full-stack dashboards
-* Transform raw embeddings into actionable analytics
-
-This project bridges **AI research and real-world system engineering**.
-
+## Main Features
+- Person management (upload or camera capture)
+- Face crop before augmentation (camera flow)
+- Attendance dashboard with analytics
+- Weekly attendance and attendance-rate charts
+- Video recognition pipeline
+- CSV export for attendance by selected date
 ---
 
 # 🖥 Live System Overview
@@ -37,9 +37,9 @@ This project bridges **AI research and real-world system engineering**.
 
 ### 📸 Screenshot – Dashboard
 
-`docs/screenshots/dashboard-overview.png`
+`docs/screenshots/dashboard.png`
 
-<img src="docs/screenshots/dashboard-overview.png" width="800"/>
+<img src="docs/screenshots/dashboard.png" width="800"/>
 
 ---
 
@@ -52,7 +52,7 @@ This project bridges **AI research and real-world system engineering**.
 
 ### 📸 Screenshot – Person Management
 
-`docs/screenshots/person-management.png`
+`docs/screenshots/persons.png`
 
 <img src="docs/screenshots/person-management.png" width="800"/>
 
@@ -126,24 +126,14 @@ FaceNet generates 128-d embedding vectors using:
 # 🏗 Architecture
 
 ```
-React (Frontend)
-        ↓ REST API
+    Frontend
+        ↓ 
 FastAPI Backend
         ↓
 Face Recognition Engine
         ↓
 SQL Database (SQLAlchemy ORM)
 ```
-
-Built with:
-
-* FastAPI
-* SQLAlchemy
-* React
-* Vite
-* Recharts
-
----
 
 # 🔌 API Documentation
 
@@ -185,6 +175,10 @@ npm run dev
 
 ---
 
+## Notes
+- Frontend package versions are listed in `package.json`.
+- Backend dependencies are pinned in `requirements.txt`.
+---
 # 📊 Engineering Decisions
 
 * Model loaded once at startup
@@ -195,102 +189,19 @@ npm run dev
 
 ---
 
-# 📈 Future Enhancements
-
-* JWT authentication
-* Role-based access control
-* Docker containerization
-* Cloud deployment (AWS / GCP)
-* Liveness detection
-* WebSocket real-time dashboard
-
----
 
 # 👤 Author
 
-Hassan Essoufi
-Machine Learning Engineer
+Essoufi Hassan
+ML & data Engineer
 
 ---
 
-# 📄 License
+# Notice
 
-MIT License
+⭐ If you find this project useful or inspiring, consider giving it a star to support the work!
 
 ---
-
-# 📂 How to Add Your Screenshots
-
-Create this structure:
-
-```
-docs/
- └── screenshots/
-```
-
-Add images with these names:
-
-```
-dashboard-overview.png
-person-management.png
-real-time-recognition.png
-video-recognition.png
-csv-export.png
-```
-
-# FacePresence - Attendance Management System
-
-## Overview
-FacePresence is a full-stack attendance platform with:
-- Frontend dashboard (React + Vite)
-- FastAPI backend
-- Real-time and video-based face recognition workflows
-- Attendance export to CSV
-
-## Tech Stack
-
-### Backend (Python)
-- FastAPI
-- SQLAlchemy
-- OpenCV / FaceNet / PyTorch
-
-### Frontend (Web)
-- React
-- React Router
-- Vite
-- Recharts
-- MUI + Emotion
-
-## Main Features
-- Person management (upload or camera capture)
-- Face crop before augmentation (camera flow)
-- Attendance dashboard with analytics
-- Weekly attendance and attendance-rate charts
-- Video recognition pipeline
-- CSV export for attendance by selected date
-
-## API (FastAPI)
-- `/attendance/all`
-- `/attendance/absent`
-- `/attendance/real_time_stream`
-- `/attendance/real_time_stream/stop`
-- `/attendance/video_recognition`
-- `/attendance/export_csv`
-- `/attendance/stats_from_csv` (currently used for dashboard chart data)
-
-## Run the Project
-
-### 1) Backend
-```bash
-pip install -r requirements.txt
-uvicorn backend.src.api.main:app --reload
-```
-
-### 2) Frontend
-```bash
-npm install
-npm run dev
-```
 
 ## Screenshots (placeholders)
 
@@ -310,7 +221,3 @@ npm run dev
 ### CSV Generation Example
 ![CSV Generation Example](docs/screenshots/csv-generation-example.png)
 
-## Notes
-- Frontend package versions are listed in `package.json`.
-- Backend dependencies are pinned in `requirements.txt`.
-- Create `docs/screenshots/` and add your images using the same filenames (or update links).
