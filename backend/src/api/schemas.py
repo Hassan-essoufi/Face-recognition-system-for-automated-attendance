@@ -1,0 +1,29 @@
+from pydantic import BaseModel
+from typing import Optional
+from datetime import datetime
+
+class AttendanceCreate(BaseModel):
+    person_name: str
+    date: str
+    time: str
+    status: str            
+    confidence: float
+    source: str            
+
+class AttendanceRead(AttendanceCreate):
+    id: int
+
+    class Config:
+        from_attributes = True
+
+class PersonAdd(BaseModel):
+    name: str
+    capture_method: str  
+
+class PersonRead(BaseModel):
+    id: int
+    name: str
+    created_at: datetime
+
+class Config:
+        from_attributes = True

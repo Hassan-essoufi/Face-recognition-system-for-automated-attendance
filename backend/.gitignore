@@ -1,0 +1,10 @@
+
+dataset/
+video_db/
+uploads/
+
+results/real_time/*.png
+
+__pycache__/
+*.pyc
+*.pyo
