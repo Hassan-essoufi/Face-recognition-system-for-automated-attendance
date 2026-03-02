@@ -1,149 +1,153 @@
-# 🚀 FacePresence
-
-### AI-Powered Real-Time Attendance Management Platform
-
-## Overview
-FacePresence is a full-stack attendance platform with:
-- Frontend dashboard (React + Vite)
-- FastAPI backend
-- Real-time and video-based face recognition workflows
-- Attendance export to CSV
----
-### Backend:
-![Python](https://img.shields.io/badge/Python-3.10+-blue)
-![FastAPI](https://img.shields.io/badge/FastAPI-High%20Performance-009688)
-![OpenCV](https://img.shields.io/badge/OpenCV-5C3EE8?style=for-the-badge&logo=opencv&logoColor=white)
-![PyTorch](https://img.shields.io/badge/PyTorch-DeepLearning-red)
+<h1 align="center">
+  MPresence IA: Real-Time Attendance Management System
+</h1>
 
 
 ---
-## Main Features
-- Person management (upload or camera capture)
-- Face crop before augmentation (camera flow)
-- Attendance dashboard with analytics
-- Weekly attendance and attendance-rate charts
-- Video recognition pipeline
-- CSV export for attendance by selected date
+
+
+# 🧠 Overview
+
+MPresence IA is a AI-powered attendance management system built with modern with deep learning.
+
+It combines:
+
+- ⚡ High-performance FastAPI backend  
+- 🎯 Real-time face recognition  
+- 🎥 Video-based recognition pipeline  
+- 📊 Interactive analytics dashboard  
+- 📁 CSV attendance export  
+
+---
+
+# 🛠 Tech Stack
+
+## 🔷 Backend
+![Python](https://img.shields.io/badge/Python-3.10+-blue?logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-High%20Performance-009688?logo=fastapi&logoColor=white)
+![OpenCV](https://img.shields.io/badge/OpenCV-5C3EE8?style=flat&logo=opencv&logoColor=white)
+![PyTorch](https://img.shields.io/badge/PyTorch-DeepLearning-EE4C2C?logo=pytorch&logoColor=white)
+![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-ORM-red)
+
+## 🔷 Frontend
+![React](https://img.shields.io/badge/React-18+-61DAFB?logo=react&logoColor=black)
+![Vite](https://img.shields.io/badge/Vite-Fast%20Build-646CFF?logo=vite&logoColor=white)
+![MUI](https://img.shields.io/badge/MUI-UI%20Framework-007FFF?logo=mui&logoColor=white)
+![Recharts](https://img.shields.io/badge/Recharts-Data%20Visualization-orange)
+
+---
+
+# ✨ Core Features
+
+- 👤 Person registration (upload or camera capture)
+- ✂ Automatic face cropping before embedding
+- 🎥 Real-time webcam recognition
+- 📹 Video file recognition pipeline
+- 📊 Dashboard attendance analytics
+- 📉 Attendance rate visualization
+- 📁 CSV export by selected date
+- 📋 Absentee tracking
+
 ---
 
 # 🖥 Live System Overview
 
-## 🔷 Dashboard
+---
+## 🔌 API Interface (FastAPI)
 
-📊 Real-time attendance metrics
-📈 Weekly trend visualization
-📉 Attendance rate analysis
-📋 Absentee tracking
+Interactive Swagger documentation available at:
 
-### 📸 Screenshot – Dashboard
+```
+http://localhost:8000/docs
+```
 
-`docs/screenshots/dashboard.png`
+<img src="docs/screenshots/Face_recognition_api.png" width="800"/>
 
-<img src="docs/screenshots/dashboard.png" width="800"/>
 
 ---
 
 ## 👤 Person Management
 
-* Register new individuals
-* Upload or capture face images
-* Automatic face cropping
-* Embedding generation and storage
+- Register new individuals  
+- Upload or capture face images  
+- Automatic face cropping  
+- Embedding generation & storage  
 
-### 📸 Screenshot – Person Management
-
-`docs/screenshots/persons.png`
-
-<img src="docs/screenshots/person-management.png" width="800"/>
+<img src="docs/screenshots/persons_gestion.png" width="800"/>
 
 ---
 
 ## 🎥 Real-Time Recognition
 
-* Live webcam detection
-* Face embedding extraction
-* Cosine similarity matching
-* Automatic attendance marking
+- Live webcam detection  
+- Face embedding extraction  
+- Cosine similarity matching  
+- Automatic attendance marking  
 
-### 📸 Screenshot – Real-Time Stream
-
-`docs/screenshots/real-time-recognition.png`
-
-<img src="docs/screenshots/real-time-recognition.png" width="800"/>
+<img src="docs/screenshots/live_recognition.png" width="800"/>
+<br>
+<img src="docs/screenshots/result_live_rcognition.png" width="800"/>
 
 ---
 
 ## 📹 Video Recognition Pipeline
 
-* Upload recorded video
-* Frame-by-frame face detection
-* Recognition across video stream
-* Batch attendance generation
+- Upload recorded video  
+- Frame-by-frame detection  
+- Recognition across stream  
+- Batch attendance generation  
 
-### 📸 Screenshot – Video Processing
+<img src="docs/screenshots/video_recognition.png" width="800"/>
 
-`docs/screenshots/video-recognition.png`
-
-<img src="docs/screenshots/video-recognition.png" width="800"/>
+<img src="docs/screenshots/result_video.png" width="800"/>
 
 ---
+## 📊 Dashboard
 
-## 📁 CSV Export & Analytics
+- Real-time attendance metrics  
+- Weekly trend visualization  
+- Attendance rate analysis  
+- Absentee tracking  
 
-* Export attendance by selected date
-* Generate structured CSV reports
-* Dashboard statistics from CSV
+<img src="docs/screenshots/dashboard1.png" width="800"/>
 
-### 📸 Screenshot – CSV Export
-
-`docs/screenshots/csv-export.png`
-
-<img src="docs/screenshots/csv-export.png" width="800"/>
+<img src="docs/screenshots/dashboard2.png" width="800"/>
 
 ---
-
 # 🧠 Machine Learning Pipeline
 
-### Step 1 – Face Detection
+### 1️⃣ Face Detection
+- MTCNN-based face detection & alignment
 
-MTCNN detects and aligns faces.
+### 2️⃣ Face Embedding
+- FaceNet architecture
+- 128-d embedding vectors
+- Implemented with PyTorch + OpenCV
 
-### Step 2 – Face Embedding
-
-FaceNet generates 128-d embedding vectors using:
-
-* PyTorch
-* OpenCV
-
-### Step 3 – Recognition Logic
-
-* Cosine similarity comparison
-* Threshold-based validation
-* Confidence scoring
+### 3️⃣ Recognition Logic
+- Cosine similarity comparison
+- Threshold-based validation
+- Confidence scoring
+- Attendance trigger logic
 
 ---
 
-# 🏗 Architecture
+# 🏗 System Architecture
 
 ```
-    Frontend
-        ↓ 
+    Frontend 
+        ↓
 FastAPI Backend
         ↓
-Face Recognition Engine
+Recognition Service Layer
+        ↓
+Face Embedding Engine (PyTorch)
         ↓
 SQL Database (SQLAlchemy ORM)
 ```
+---
 
-# 🔌 API Documentation
-
-Interactive Swagger UI available at:
-
-```
-/docs
-```
-
-### Main Endpoints
+# 📡 API Endpoints
 
 ```
 GET    /attendance/all
@@ -157,67 +161,43 @@ GET    /attendance/stats_from_csv
 
 ---
 
-# 🚀 How to Run
+# 🚀 Getting Started
 
-## Backend
+## 1️⃣ Backend
 
 ```bash
 pip install -r requirements.txt
 uvicorn backend.src.api.main:app --reload
 ```
 
-## Frontend
+Backend runs at:
+```
+http://localhost:8000
+```
+
+---
+
+## 2️⃣ Frontend
 
 ```bash
 npm install
 npm run dev
 ```
 
----
-
-## Notes
-- Frontend package versions are listed in `package.json`.
-- Backend dependencies are pinned in `requirements.txt`.
----
-# 📊 Engineering Decisions
-
-* Model loaded once at startup
-* Modular service-layer architecture
-* CSV-driven lightweight analytics
-* Controlled stream lifecycle
-* Separation of ML pipeline and API layer
+Frontend runs at:
+```
+http://localhost:5173
+```
 
 ---
-
 
 # 👤 Author
 
-Essoufi Hassan
-ML & data Engineer
+**Essoufi Hassan**  
+Machine Learning & Data Engineer  
 
 ---
 
-# Notice
+# ⭐ Note
 
-⭐ If you find this project useful or inspiring, consider giving it a star to support the work!
-
----
-
-## Screenshots (placeholders)
-
-### Frontend Screenshots
-> Replace the image paths below with your real screenshots.
-
-![Frontend - Dashboard](docs/screenshots/frontend-dashboard.png)
-![Frontend - Person Management](docs/screenshots/frontend-person-management.png)
-
-### FastAPI Screenshots
-![FastAPI - Swagger UI](docs/screenshots/fastapi-swagger.png)
-![FastAPI - Endpoint Test](docs/screenshots/fastapi-endpoint-test.png)
-
-### Video Recognition Example
-![Video Recognition Example](docs/screenshots/video-recognition-example.png)
-
-### CSV Generation Example
-![CSV Generation Example](docs/screenshots/csv-generation-example.png)
-
+If you find this project useful or inspiring, consider giving it a ⭐ to support the work.
